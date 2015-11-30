@@ -157,8 +157,8 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Move window to left monitor
-bindsym $mod+o move workspace to output left
-bindsym $mod+p move workspace to output right
+bindsym $mod+Shift+o move workspace to output left
+bindsym $mod+Shift+p move workspace to output right
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -195,6 +195,8 @@ bar {
 
 # Lock
 bindsym $mod+c exec i3lock --color 000000
+# PlayPause Spostify
+bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'"
