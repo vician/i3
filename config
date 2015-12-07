@@ -225,4 +225,4 @@ exec pgrep owncloud > /dev/null || (owncloud &)
 exec pgrep insync > /dev/null || (insync start &)
 
 # Remove title bar for all new windows
-new_window 1pixel
+new_window normal
