@@ -35,6 +35,7 @@ bindsym $mod+KP_Enter exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym --release button2 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -94,15 +95,15 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $w1 1 www
-set $w2 2 chail
-set $w3 3 notes
-set $w4 4 term
-set $w5 5 term
-set $w6 6 term
-set $w7 7 term
-set $w8 8 term
-set $w9 9 media
-set $w10 10 pass
+set $w2 2 chm
+set $w3 3 trm
+set $w4 4 trm
+set $w5 5 trm
+set $w6 6 trm
+set $w7 7 trm
+set $w8 8 nts
+set $w9 9 mda
+set $w10 10 pss
 
 # switch to workspace
 bindsym $mod+1 workspace $w1
@@ -222,6 +223,17 @@ bindsym $mod+KP_Multiply exec "amixer -D pulse set Master toggle"
 # Switch via ALT+TAB
 bindsym Mod1+Tab focus left
 bindsym Mod1+Shift+Tab focus right
+
+# The middle button and a modifer over any part of the window kills the window
+bindsym --whole-window $mod+button2 kill
+
+# The right button toggles floating
+bindsym button3 floating toggle
+bindsym $mod+button3 floating toggle
+
+# The side buttons move the window around
+bindsym button9 move left
+bindsym button8 move right
 
 # Switch keyboard layouts
 exec "setxkbmap -layout us,cz"
