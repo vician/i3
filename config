@@ -95,13 +95,13 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $w1 1 www
-set $w2 2 chm
+set $w2 2 trm
 set $w3 3 trm
 set $w4 4 trm
 set $w5 5 trm
 set $w6 6 trm
-set $w7 7 trm
-set $w8 8 nts
+set $w7 7 cht
+set $w8 8 mnt
 set $w9 9 mda
 set $w10 10 pss
 
@@ -191,6 +191,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+    #tray_output HDMI2
 	position top
         status_command i3status --config ~/.i3/i3status.conf
 }
