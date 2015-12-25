@@ -38,7 +38,7 @@ bindsym $mod+Shift+q kill
 bindsym --release button2 kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -178,8 +178,7 @@ mode "resize" {
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -193,7 +192,9 @@ bindsym $mod+r mode "resize"
 bar {
     #tray_output HDMI2
 	position top
-        status_command i3status --config ~/.i3/i3status.conf
+    #status_command i3status --config ~/.i3/i3status.conf
+    #status_command ~/.i3/i3status.sh
+    status_command i3blocks -c ~/.i3/i3blocks.conf
 }
 
 # Lock
@@ -222,8 +223,8 @@ bindsym $mod+KP_Subtract exec "amixer -D pulse sset Master '3%-'"
 bindsym $mod+KP_Multiply exec "amixer -D pulse set Master toggle"
 
 # Switch via ALT+TAB
-bindsym Mod1+Tab focus left
-bindsym Mod1+Shift+Tab focus right
+#bindsym Mod1+Tab focus left
+#bindsym Mod1+Shift+Tab focus right
 
 # The middle button and a modifer over any part of the window kills the window
 bindsym --whole-window $mod+button2 kill
@@ -243,8 +244,16 @@ exec "setxkbmap -option 'grp:alt_caps_toggle'"
 # Autostart applications
 exec pgrep nm-applet > /dev/null || (nm-applet &)
 exec pgrep xautolock > /dev/null || (xautolock -time 10 -locker 'i3lock --color 000000' &)
+exec xset dpms 600
 exec pgrep owncloud > /dev/null || (owncloud &)
 exec pgrep insync > /dev/null || (insync start &)
 
 # Remove title bar for all new windows
 new_window normal
+
+bindsym $mod+d exec rofi -show run -sidebar-mode -lines 0
+bindsym Mod1+Tab exec rofi -show window -sidebar-mode -lines 0
+#exec rofi -key-run SuperL+d -key-window Alt+Tab
+bindsym Mod1+Shift+Tab exec ~/Documents/src/RandomScripts/i3_switch_workspace.sh
+
+#bindsym $mod+Tab workspace back_and_forth
