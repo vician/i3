@@ -3,6 +3,7 @@
 readonly SRC_PATH="$HOME/Documents/src/"
 readonly I3_PATH=${SRC_PATH}i3
 readonly ROFI_PATH=${SRC_PATH}rofi
+readonly LAYOUT_PATH=${SRC_PATH}xkblayout-state
 
 
 ## Requirements
@@ -29,3 +30,7 @@ cd build
 ../configure
 make
 sudo make install
+
+git clone https://github.com/nonpop/xkblayout-state $LAYOUT_PATH
+cd $LAYOUT_PATH
+make
