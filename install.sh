@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly SRC_PATH="~/Documents/src/"
+readonly SRC_PATH="$HOME/Documents/src/"
 readonly I3_PATH=${SRC_PATH}i3
 readonly ROFI_PATH=${SRC_PATH}rofi
 
@@ -18,7 +18,7 @@ make
 sudo make install
 
 # Additional packages
-sudo aptitude install i3lock i3blocks i3status xautolock acpi lm-sensors
+sudo aptitude install i3lock i3blocks i3status xautolock acpi lm-sensors terminator
 
 # Building Rofi
 git clone https://github.com/DaveDavenport/rofi $ROFI_PATH
