@@ -244,7 +244,7 @@ exec "setxkbmap -option 'grp:alt_caps_toggle'"
 
 # Autostart applications
 exec pgrep nm-applet > /dev/null || (nm-applet &)
-exec pgrep xautolock > /dev/null || (xautolock -time 10 -locker 'i3lock --color 000000' &)
+exec pgrep xautolock > /dev/null || (xautolock -time 10 -locker 'i3lock -e --color 000000' &)
 exec xset dpms 600
 exec pgrep owncloud > /dev/null || (owncloud &)
 exec pgrep insync > /dev/null || (insync start &)
