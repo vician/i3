@@ -95,3 +95,6 @@ else
 	cd $RS_PATH
 	git pull
 fi
+
+# Restart i3
+i3-msg restart
