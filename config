@@ -198,7 +198,7 @@ bar {
 }
 
 # Lock
-bindsym $mod+c exec i3lock --color 000000
+bindsym $mod+c exec i3lock -e --color 000000
 # PlayPause Spostify
 bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
@@ -255,6 +255,6 @@ new_window normal
 bindsym $mod+d exec rofi -show run -sidebar-mode -lines 0
 bindsym $mod+Tab exec rofi -show window -sidebar-mode -lines 0
 #exec rofi -key-run SuperL+d -key-window Alt+Tab
-bindsym $mod+Shift+Tab exec ~/Documents/src/RandomScripts/i3_switch_workspace.sh
+bindsym $mod+Shift+Tab exec ~/Documents/src/i3scripts/i3_switch_workspace.sh
 
 bindsym $mod+Control+Tab workspace back_and_forth
