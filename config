@@ -94,6 +94,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $w0 ` pss
 set $w1 1 www
 set $w2 2 trm
 set $w3 3 trm
@@ -101,11 +102,14 @@ set $w4 4 trm
 set $w5 5 trm
 set $w6 6 trm
 set $w7 7 cht
-set $w8 8 mnt
+set $w8 8 eml
 set $w9 9 mda
-set $w10 10 pss
+set $w10 10
+set $w11 -
+set $w12 =
 
 # switch to workspace
+bindsym $mod+grave workspace $w0
 bindsym $mod+1 workspace $w1
 bindsym $mod+2 workspace $w2
 bindsym $mod+3 workspace $w3
@@ -116,7 +120,10 @@ bindsym $mod+7 workspace $w7
 bindsym $mod+8 workspace $w8
 bindsym $mod+9 workspace $w9
 bindsym $mod+0 workspace $w10
+bindsym $mod+minus workspace $w11
+bindsym $mod+equal workspace $w12
 # numeric keyboard
+#bindsym $mod+KP_Delete workspace $w0
 bindsym $mod+KP_1 workspace $w1
 bindsym $mod+KP_2 workspace $w2
 bindsym $mod+KP_3 workspace $w3
@@ -129,6 +136,7 @@ bindsym $mod+KP_9 workspace $w9
 bindsym $mod+KP_0 workspace $w10
 
 # move focused container to workspace
+bindsym $mod+Shift+grave move container to workspace $w0
 bindsym $mod+Shift+1 move container to workspace $w1
 bindsym $mod+Shift+2 move container to workspace $w2
 bindsym $mod+Shift+3 move container to workspace $w3
@@ -139,7 +147,10 @@ bindsym $mod+Shift+7 move container to workspace $w7
 bindsym $mod+Shift+8 move container to workspace $w8
 bindsym $mod+Shift+9 move container to workspace $w9
 bindsym $mod+Shift+0 move container to workspace $w10
+bindsym $mod+Shift+minus move container to workspace $w11
+bindsym $mod+Shift+equal move container to workspace $w12
 # numeric keyboard
+bindsym $mod+Shift+KP_Delete move container to workspace $w0
 bindsym $mod+Shift+KP_1 move container to workspace $w1
 bindsym $mod+Shift+KP_2 move container to workspace $w2
 bindsym $mod+Shift+KP_3 move container to workspace $w3
@@ -209,8 +220,8 @@ bindsym $mod+x floating enable
 bindsym $mod+Shift+x floating disable
 
 # Scratchpad
-bindsym $mod+minus scratchpad show
-bindsym $mod+Shift+minus move scratchpad
+#bindsym $mod+minus scratchpad show
+#bindsym $mod+Shift+minus move scratchpad
 
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'" exec pkill -SIGRTMIN+10 i3blocks
