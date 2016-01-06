@@ -273,3 +273,6 @@ bindsym $mod+Tab exec rofi -show window -sidebar-mode -lines 0
 bindsym $mod+Shift+Tab exec ~/Documents/src/i3scripts/i3_switch_workspace.sh
 
 bindsym $mod+Control+Tab workspace back_and_forth
+
+exec killall -q notify-osd
+exec dunst -config ~/.i3/dunstrc
