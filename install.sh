@@ -6,6 +6,17 @@ readonly ROFI_PATH=${SRC_PATH}rofi
 readonly LAYOUT_PATH=${SRC_PATH}xkblayout-state
 readonly RS_PATH=${SRC_PATH}i3scripts
 
+function check_repository {
+	git remote update
+	git status -uno | grep up-to-date
+	if [ $? -eq 0 ]; then
+		echo " - no changes on remote repository"
+		return 0
+	else
+		return 1
+	fi
+}
+
 ## Requirements
 # i3
 echo "Checking i3 package requirements"
@@ -18,17 +29,25 @@ else
 fi
 
 # Building i3
+function build_i3 {
+	echo "- building i3"
+	make
+	sudo make install
+}
 echo "Checking i3 repository"
 if [ ! -d $I3_PATH ]; then
 	echo "- new clone"
 	git clone https://github.com/i3/i3.git $I3_PATH
 	cd $I3_PATH
-	make
-	sudo make install
+	build_i3
 else
-	echo "- pull changes"
+	echo "- pulling changes"
 	cd $I3_PATH
-	git pull
+	check_repository
+	if [ $? -ne 0 ]; then
+		git pull
+		build_i3
+	fi
 fi
 
 # Rofi
@@ -42,17 +61,22 @@ else
 fi
 
 # Additional packages
-echo "Checking additional packages"
-which terminator 1>/dev/null 2>/dev/null
-if [ $? -ne 0 ]; then
-	echo "- installing"
-	sudo aptitude install i3lock i3blocks i3status xautolock acpi lm-sensors terminator
-else
-	echo "- already installed"
-fi
+additionals=("i3lock" "i3blocks" "i3status" "xautolock" "acpi" "lm-sensors" "terminator")
+echo "Checking additional packages (${additional[*]}"
+for additional in ${additionals[@]}; do
+	echo -n "- $additional"
+	dpkg -s $additional 1>/dev/null 2>/dev/null | grep Status
+	if [ $? -eq 0 ]; then
+		echo " - installing"
+		sudo aptitude install $additional
+	else
+		echo " - already installed"
+	fi
+done
 
 # Building Rofi
-function rofi_build {
+function build_rofi {
+	echo "- building rofi"
 	autoreconf -i
 	mkdir build
 	cd build
@@ -65,11 +89,15 @@ if [ ! -d $ROFI_PATH ]; then
 	echo "- new clone"
 	git clone https://github.com/DaveDavenport/rofi $ROFI_PATH
 	cd $ROFI_PATH
-	rofi_build
+	build_rofi
 else
-	echo "- pull changes"
+	echo "- pulling changes"
 	cd $ROFI_PATH
-	git pull
+	check_repository
+	if [ $? -ne 0 ]; then
+		git pull
+		build_rofi
+	fi
 fi
 
 # Keyboard layout
