@@ -162,6 +162,10 @@ bindsym $mod+Shift+KP_8 move container to workspace $w8
 bindsym $mod+Shift+KP_9 move container to workspace $w9
 bindsym $mod+Shift+KP_0 move container to workspace $w10
 
+assign [class="Pidgin"] $w7
+assign [class="Thunderbird"] $w8
+assign [class="KeePass"] $w0
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
