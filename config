@@ -94,19 +94,28 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+#keepass
 set $w0 `p
+#web
 set $w1 1w
+#terms
 set $w2 2t
 set $w3 3t
 set $w4 4t
 set $w5 5t
 set $w6 6t
+#chat
 set $w7 7c
+#mail
 set $w8 8m
-set $w9 9d
-set $w10 10
+#notes
+set $w9 9n
+#personal at work
+set $w10 10p
+#second work or work at home
 set $w11 -
-set $w12 =
+#media
+set $w12 =d
 
 # switch to workspace
 bindsym $mod+grave workspace $w0
@@ -250,7 +259,7 @@ bindsym $mod+button3 floating toggle
 bindsym button9 move left
 bindsym button8 move right
 
-# Switch keyboard layouts
+# Switch keyboard layouts - Doesn't work!!!
 exec_always setxkbmap -layout us,cz"
 exec_always setxkbmap -option 'grp:alt_caps_toggle'
 #bindsym --release Alt_L+Caps_Lock exec pkill -SIGRTMIN+12 i3blocks
