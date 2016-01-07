@@ -260,7 +260,7 @@ bindsym button9 move left
 bindsym button8 move right
 
 # Switch keyboard layouts - Doesn't work!!!
-exec_always setxkbmap -layout us,cz"
+exec_always setxkbmap -layout us,cz
 exec_always setxkbmap -option 'grp:alt_caps_toggle'
 #bindsym --release Alt_L+Caps_Lock exec pkill -SIGRTMIN+12 i3blocks
 
