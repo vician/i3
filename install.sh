@@ -61,7 +61,7 @@ else
 fi
 
 # Additional packages
-additionals=("i3lock" "i3blocks" "xautolock" "acpi" "lm-sensors" "terminator" "dunst" "feh" )
+additionals=("i3lock" "i3blocks" "xautolock" "acpi" "lm-sensors" "terminator" "dunst" "feh" "xclip" )
 echo "Checking additional packages (${additional[*]}"
 for additional in ${additionals[@]}; do
 	echo -n "- $additional"
