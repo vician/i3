@@ -240,6 +240,12 @@ bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '3%-'" exec pkill
 bindsym XF86AudioMute exec "amixer -D pulse set Master toggle" exec pkill -SIGRTMIN+10 i3blocks
 bindsym XF86Display exec "arandr"
 bindsym XF86TouchpadToggle exec ~/.i3/touchpad.sh
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 # Volume numeric 
 bindsym $mod+KP_Add exec "amixer -D pulse sset Master '3%+'" exec pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+KP_Subtract exec "amixer -D pulse sset Master '3%-'" exec pkill -SIGRTMIN+10 i3blocks
