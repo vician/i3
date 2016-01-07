@@ -239,6 +239,7 @@ bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master '3%+'" exec pkill
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master '3%-'" exec pkill -SIGRTMIN+10 i3blocks
 bindsym XF86AudioMute exec "amixer -D pulse set Master toggle" exec pkill -SIGRTMIN+10 i3blocks
 bindsym XF86Display exec "arandr"
+bindsym XF86TouchpadToggle exec ~/.i3/touchpad.sh
 # Volume numeric 
 bindsym $mod+KP_Add exec "amixer -D pulse sset Master '3%+'" exec pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+KP_Subtract exec "amixer -D pulse sset Master '3%-'" exec pkill -SIGRTMIN+10 i3blocks
