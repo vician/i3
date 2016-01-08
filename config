@@ -68,6 +68,14 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# cycle workspace
+bindsym $mod+control+h workspace prev
+bindsym $mod+control+l workspace next
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+control+Left workspace prev
+bindsym $mod+control+Right workspace next
+
 # split in horizontal orientation
 bindsym $mod+b split h
 
