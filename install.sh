@@ -65,7 +65,7 @@ additionals=("i3lock" "i3blocks" "xautolock" "acpi" "lm-sensors" "terminator" "d
 echo "Checking additional packages (${additional[*]}"
 for additional in ${additionals[@]}; do
 	echo -n "- $additional"
-	dpkg -s $additional 1>/dev/null 2>/dev/null | grep Status
+	dpkg -s $additional 1>/dev/null 2>/dev/null
 	if [ $? -eq 0 ]; then
 		echo " - installing"
 		sudo aptitude install $additional
