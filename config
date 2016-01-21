@@ -232,6 +232,7 @@ bar {
 bindsym $mod+c exec i3lock -e --color 000000
 # PlayPause Spostify
 bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+bindsym $mod+n exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next 1>/dev/null 2>/dev/null
 
 # window on all workspaces
 bindsym $mod+Shift+w sticky toggle
