@@ -220,6 +220,17 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+mode "player" {
+	bindsym s exec "echo spotify > ~/.i3/player ; i3-msg mode default" exec pkill -SIGRTMIN+11 i3blocks
+	bindsym v exec "echo vlc > ~/.i3/player ; i3-msg mode default" exec pkill -SIGRTMIN+11 i3blocks
+
+	# back to normal: Enter or Escape
+	bindsym Return mode "default" exec pkill -SIGRTMIN+11 i3blocks
+	bindsym Escape mode "default" exec pkill -SIGRTMIN+11 i3blocks
+}
+
+bindsym $mod+u mode "player"
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -231,9 +242,12 @@ bar {
 # Lock
 bindsym $mod+c exec i3lock -e --color 000000
 # PlayPause Spostify
-bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym $mod+n exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next 1>/dev/null 2>/dev/null
-bindsym $mod+Shift+n exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous 1>/dev/null 2>/dev/null
+bindsym $mod+p exec ~/.i3/player-control toggle
+bindsym $mod+n exec ~/.i3/player-control next
+bindsym $mod+Shift+n exec ~/.i3/player-control prev
+#bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+#bindsym $mod+n exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next 1>/dev/null 2>/dev/null
+#bindsym $mod+Shift+n exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous 1>/dev/null 2>/dev/null
 
 # window on all workspaces
 bindsym $mod+Shift+w sticky toggle

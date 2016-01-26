@@ -124,5 +124,8 @@ else
 	git pull
 fi
 
+# Init player file
+touch .i3/player
+
 # Restart i3
 i3-msg restart

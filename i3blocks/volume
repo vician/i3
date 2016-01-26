@@ -62,10 +62,12 @@ format() {
 #------------------------------------------------------------------------
 
 case $BLOCK_BUTTON in
-  1) dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause 1>/dev/null 2>/dev/null ;;
-  #2) amixer -q -D $MIXER sset $SCONTROL $(capability) toggle ;;  # middle click, mute/unmute
+  # LeftClick - PlayPause
+  1) ~/.i3/player-control toggle ;;
+  # MiddleClick - mute/unmute
   2) amixer -q -D pulse set Master toggle ;;
-  3) dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next 1>/dev/null 2>/dev/null ;;
+  # RightClick - Next Song
+  3) ~/.i3/player-control next ;;
   4) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}+ unmute ;; # scroll up, increase
   5) amixer -q -D $MIXER sset $SCONTROL $(capability) ${STEP}- unmute ;; # scroll down, decrease
 esac

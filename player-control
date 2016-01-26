@@ -1,6 +1,6 @@
 #!/bin/sh
-name="$1"
-shift
+name="$(cat ~/.i3/player)"
+#shift
 PATHS="org.mpris.MediaPlayer2.$name /org/mpris/MediaPlayer2"
 DBUS_SEND="dbus-send --type=method_call --dest=$PATHS"
 RC="$DBUS_SEND org.mpris.MediaPlayer2.Player"

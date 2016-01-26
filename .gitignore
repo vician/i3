@@ -1,1 +1,3 @@
 *.swp
+player
+!i3blocks/player
