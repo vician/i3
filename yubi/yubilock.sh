@@ -4,6 +4,12 @@ readonly APPROVED="$HOME/.i3/yubi/approved.txt"
 readonly SCAN="$HOME/.i3/yubi/scanning.txt"
 readonly LOCKED="$HOME/.i3/yubi/yubi-locked"
 
+LINES=$(pgrep yubilock 2>/dev/null | wc -l)
+if [ $LINES == "3" ]; then
+	echo "yubilock already running ($LINES)"
+	exit 0
+fi
+
 if [ $(pidof pcsc_scan) ]; then
        echo pcsc_scan is running
 else

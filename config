@@ -320,3 +320,5 @@ exec killall -q notify-osd
 exec dunst -config ~/.i3/dunstrc
 
 exec_always feh --bg-scale ~/Pictures/background.jpg
+
+exec_always ~/.i3/yubi/yubilock.sh
