@@ -1,3 +1,6 @@
 *.swp
 player
 !i3blocks/player
+yubi-locked
+approved.txt
+scanning.txt
