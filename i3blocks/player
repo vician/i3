@@ -3,6 +3,8 @@
 case $BLOCK_BUTTON in
   # LeftClick - Spotify
   1) echo "spotify" > ~/.i3/player ;;
+  # MiddleClick - gnome-mplayer
+  2) echo "gnome-mplayer" > ~/.i3/player ;;
   # RightClick - VLC
   3) echo "vlc" > ~/.i3/player  ;;
 esac
