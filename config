@@ -247,9 +247,6 @@ bindsym $mod+c exec ~/.i3/lock.sh
 bindsym $mod+p exec ~/.i3/player-control toggle
 bindsym $mod+n exec ~/.i3/player-control next
 bindsym $mod+Shift+n exec ~/.i3/player-control prev
-#bindsym $mod+p exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-#bindsym $mod+n exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next 1>/dev/null 2>/dev/null
-#bindsym $mod+Shift+n exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous 1>/dev/null 2>/dev/null
 
 # window on all workspaces
 bindsym $mod+Shift+w sticky toggle
@@ -269,10 +266,11 @@ bindsym XF86Display exec "arandr"
 bindsym XF86TouchpadToggle exec ~/.i3/touchpad.sh
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym XF86AudioPause exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym XF86AudioNext exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym XF86AudioPrev exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+bindsym XF86AudioPlay exec ~/.i3/player-control toggle
+bindsym XF86AudioPause exec ~/.i3/player-control toggle
+bindsym XF86AudioNext exec ~/.i3/player-control next
+bindsym XF86AudioPrev exec ~/.i3/player-control prev
+bindsym XF86AudioStop exec ~/.i3/player-control stop
 # Volume numeric 
 bindsym $mod+KP_Add exec "amixer -D pulse sset Master '3%+'" exec pkill -SIGRTMIN+10 i3blocks
 bindsym $mod+KP_Subtract exec "amixer -D pulse sset Master '3%-'" exec pkill -SIGRTMIN+10 i3blocks
