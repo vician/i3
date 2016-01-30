@@ -66,7 +66,7 @@ echo "Checking additional packages (${additional[*]}"
 for additional in ${additionals[@]}; do
 	echo -n "- $additional"
 	dpkg -s $additional 1>/dev/null 2>/dev/null
-	if [ $? -eq 0 ]; then
+	if [ $? -ne 0 ]; then
 		echo " - installing"
 		sudo aptitude install $additional
 	else
@@ -125,7 +125,7 @@ else
 fi
 
 # Init player file
-touch .i3/player
+touch ~/.i3/player
 
 # Restart i3
 i3-msg restart
