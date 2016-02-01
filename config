@@ -310,6 +310,7 @@ exec pgrep insync > /dev/null || (insync start &)
 new_window normal
 
 bindsym $mod+d exec rofi -show run -sidebar-mode -lines 0
+bindsym $mod+Shift+d exec rofi -show ssh -sidebar-mode -lines 0
 bindsym $mod+Tab exec rofi -show window -sidebar-mode -lines 0
 #exec rofi -key-run SuperL+d -key-window Alt+Tab
 bindsym $mod+Shift+Tab exec ~/Documents/src/i3scripts/i3_switch_workspace.sh
