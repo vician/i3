@@ -279,8 +279,8 @@ bindsym $mod+KP_Multiply exec "amixer -D pulse set Master toggle" exec pkill -SI
 bindsym $mod+Shift+t exec ~/.i3/touchpad.sh
 
 # Switch via ALT+TAB
-bindsym Mod1+Tab focus left
-bindsym Mod1+Shift+Tab focus right
+bindsym Mod1+Tab focus right
+bindsym Mod1+Shift+Tab focus left
 
 # The middle button and a modifer over any part of the window kills the window
 bindsym --whole-window $mod+button2 kill
