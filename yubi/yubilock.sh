@@ -28,7 +28,7 @@ else
         tail -n 3 $SCAN | grep removed
 	pgrep i3lock
 	if [ $? -ne 0 ]; then
-		~/.i3/lock.sh
+		~/.i3/lock.sh force
 	fi
 fi
 done
