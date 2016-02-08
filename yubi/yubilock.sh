@@ -22,13 +22,16 @@ do
 tail -n 3 $SCAN | grep "$(cat $APPROVED)"
 
 if [ $? == 0 ]; then
-	echo unlocked
-	pkill i3lock
+	if [ ! -f ~/.i3/yubi/force.lock ]; then
+		echo unlocked
+		pkill i3lock
+	fi
 else
         tail -n 3 $SCAN | grep removed
 	pgrep i3lock
 	if [ $? -ne 0 ]; then
 		~/.i3/lock.sh force
+		rm ~/.i3/yubi/force.lock
 	fi
 fi
 done

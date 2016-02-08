@@ -330,7 +330,7 @@ exec pgrep nm-applet > /dev/null || (nm-applet &)
 exec pgrep xautolock > /dev/null || (xautolock -time 10 -locker '~/.i3/lock.sh' &)
 exec xset dpms 600
 exec pgrep owncloud > /dev/null || (owncloud &)
-exec pgrep insync > /dev/null || (insync start &)
+exec_always pgrep insync > /dev/null || (insync start &)
 
 # Remove title bar for all new windows
 new_window normal
@@ -349,3 +349,6 @@ exec dunst -config ~/.i3/dunstrc
 exec_always feh --bg-scale ~/Pictures/background.jpg
 
 exec_always ~/.i3/yubi/yubilock.sh
+exec_always ~/.i3/monitor-hotplug.sh noreload
+exec_always pgrep udevadm > /dev/null || udevadm monitor --property &
+

@@ -127,5 +127,10 @@ fi
 # Init player file
 touch ~/.i3/player
 
+if [ ! -f /etc/udev/rules.d/80-monitor-hotplug.rules ]; then
+	#echo ACTION=="change", SUBSYSTEM=="drm", RUN+="/home/$USER/.i3/monitor-hotplug.sh" > /etc/udev/rules.d/80-monitor-hotplug.rules
+	echo @TODO
+fi
+
 # Restart i3
 i3-msg restart
