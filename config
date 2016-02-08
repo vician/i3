@@ -183,6 +183,7 @@ assign [class="Pidgin"] $w7
 assign [class="Thunderbird"] $w8
 assign [class="KeePass"] $w0
 assign [class="Spotify"] $w12
+assign [class="Chromium"] $w1
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
