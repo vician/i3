@@ -178,6 +178,20 @@ bindsym $mod+Shift+KP_7 move container to workspace $w7
 bindsym $mod+Shift+KP_8 move container to workspace $w8
 bindsym $mod+Shift+KP_9 move container to workspace $w9
 bindsym $mod+Shift+KP_0 move container to workspace $w10
+# move defined workspace to different left output
+bindsym $mod+Control+grave workspace $w0; move workspace to output left
+bindsym $mod+Control+1 workspace $w1; move workspace to output left
+bindsym $mod+Control+2 workspace $w2; move workspace to output left
+bindsym $mod+Control+3 workspace $w3; move workspace to output left
+bindsym $mod+Control+4 workspace $w4; move workspace to output left
+bindsym $mod+Control+5 workspace $w5; move workspace to output left
+bindsym $mod+Control+6 workspace $w6; move workspace to output left
+bindsym $mod+Control+7 workspace $w7; move workspace to output left
+bindsym $mod+Control+8 workspace $w8; move workspace to output left
+bindsym $mod+Control+9 workspace $w9; move workspace to output left
+bindsym $mod+Control+0 workspace $w10; move workspace to output left
+bindsym $mod+Control+minus workspace $w11; move workspace to output left
+bindsym $mod+Control+equal workspace $w12; move workspace to output left
 
 assign [class="Pidgin"] $w7
 assign [class="Thunderbird"] $w8
