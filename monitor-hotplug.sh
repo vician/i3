@@ -10,15 +10,15 @@ export XAUTHORITY=/home/sansom/.Xauthority
  # Read the status of the relevant graphics adapter
 if [ "$HOSTNAME" == "remus" ]; then
 	read STATUS < /sys/class/drm/card0-HDMI-A-3/status
-	echo "remus: $STATUS"
-	if [ "$STATUS" = "connected" ]; then
-		/home/sansom/.screenlayout/both.sh
-	else
-		/home/sansom/.screenlayout/nb-only.sh
-	fi
-	if [ $# -eq 0 ]; then
-		i3-msg restart
-	fi
-elif [ "$HOSTANME" == "pete" ]; then
-	xrandr --auto
+elif [ "$HOSTNAME" == "pete" ]; then
+	read STATUS < /sys/class/drm/card0-HDMI-A-1/status
 fi
+echo "$HOSTNAME: $STATUS"
+if [ "$STATUS" = "connected" ]; then
+	/home/sansom/.screenlayout/both.sh
+else
+	/home/sansom/.screenlayout/nb-only.sh
+fi  
+if [ $# -eq 0 ]; then
+	i3-msg restart
+fi  
