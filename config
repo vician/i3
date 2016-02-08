@@ -192,6 +192,17 @@ bindsym $mod+Control+9 workspace $w9; move workspace to output left
 bindsym $mod+Control+0 workspace $w10; move workspace to output left
 bindsym $mod+Control+minus workspace $w11; move workspace to output left
 bindsym $mod+Control+equal workspace $w12; move workspace to output left
+# numeric
+bindsym $mod+Control+KP_1 workspace $w1; move workspace to output left
+bindsym $mod+Control+KP_2 workspace $w2; move workspace to output left
+bindsym $mod+Control+KP_3 workspace $w3; move workspace to output left
+bindsym $mod+Control+KP_4 workspace $w4; move workspace to output left
+bindsym $mod+Control+KP_5 workspace $w5; move workspace to output left
+bindsym $mod+Control+KP_6 workspace $w6; move workspace to output left
+bindsym $mod+Control+KP_7 workspace $w7; move workspace to output left
+bindsym $mod+Control+KP_8 workspace $w8; move workspace to output left
+bindsym $mod+Control+KP_9 workspace $w9; move workspace to output left
+bindsym $mod+Control+KP_0 workspace $w10; move workspace to output left
 
 assign [class="Pidgin"] $w7
 assign [class="Thunderbird"] $w8
