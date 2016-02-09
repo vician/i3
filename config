@@ -352,3 +352,4 @@ exec_always ~/.i3/yubi/yubilock.sh
 exec_always ~/.i3/monitor-hotplug.sh noreload
 exec_always pgrep udevadm > /dev/null || udevadm monitor --property &
 
+exec gpg-agent
