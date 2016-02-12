@@ -30,8 +30,10 @@ font pango:monospace 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
-bindsym $mod+KP_Enter exec terminator
+bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Shift+Return exec terminator
+bindsym $mod+KP_Enter exec gnome-terminal
+bindsym $mod+Shift+KP_Enter exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
