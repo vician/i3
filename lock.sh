@@ -2,6 +2,7 @@
 
 pgrep i3lock
 if [ $? -eq 0 ]; then
+	echo "already locked"
 	exit 0;
 fi
 

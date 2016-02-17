@@ -345,6 +345,8 @@ bindsym $mod+Shift+Tab exec ~/Documents/src/i3scripts/i3_switch_workspace.sh
 
 bindsym $mod+Control+Tab workspace back_and_forth
 
+bindsym Print exec gnome-screenshot
+
 exec killall -q notify-osd
 exec dunst -config ~/.i3/dunstrc
 
