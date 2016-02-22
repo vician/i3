@@ -58,5 +58,7 @@ esac
 
 #------------------------------------------------------------------------
 
-echo "IP"
-echo "IP"
+IF_SHORT=$(echo $IF | cut -c1-1)
+
+echo "IP $IF_SHORT"
+echo "IP $IF_SHORT"
