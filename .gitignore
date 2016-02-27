@@ -6,4 +6,6 @@ approved.txt
 scanning.txt
 monitor.log
 yubi/force.lock
-weather_city
+weather_cities
+weather_api
+weather_cities_index

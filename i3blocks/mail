@@ -1,0 +1,9 @@
+#!/bin/bash
+
+COUNT=$(cat ~/.sup/new_mails)
+
+echo $COUNT
+if [ "$COUNT" != 0 ]; then
+	echo "#FF0000"
+	exit 33
+fi

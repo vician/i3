@@ -1,0 +1,24 @@
+#!/bin/bash
+
+file_city="$HOME/.i3/weather_city"
+
+CITY1="prague"
+CITY2="budweis"
+CITY3="hodonin"
+
+CITY=$(cat $file_city)
+
+function do_notify {
+	notify-send "$(curl wttr.in/$CITY 2>/dev/null 3>/dev/null | head -n 7| sed -r "s:\x1B\[[0-9;]*[mK]::g")"
+}
+
+case $BLOCK_BUTTON in
+  1) CITY=$CITY1; echo $CITY > $file_city; do_notify ;;
+  2) CITY=$CITY2; echo $CITY > $file_city; do_notify ;;
+  3) CITY=$CITY3; echo $CITY > $file_city; do_notify ;;
+esac
+
+CITY_SHORT=$(echo $CITY | cut -c1-1 | awk '{print toupper($0)}')
+echo -n "$CITY_SHORT "
+
+curl wttr.in/$CITY 2>/dev/null 3>/dev/null | head -n 7 | sed -r "s:\x1B\[[0-9;]*[mK]::g" | grep °C | cut -c16-40 | sed 's/  */ /g' | sed 's/[ \t]*$//'
