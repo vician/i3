@@ -52,34 +52,34 @@ else
 fi
 
 # i3blocks
-echo "Checking i3blocks package requirements"
-which i3blocks 1>/dev/null 2>/dev/null
-if [ $? -ne 0 ]; then
-	echo "- installing"
-	sudo aptitude install ruby-ronn
-else
-	echo "- already installed"
-fi
-function build_i3blocks {
-	echo "- bulding i3blocks"
-	make all
-	sudo make install
-}
-echo "Checking i3blocks repository"
-if [ ! -d $I3BLOCKS_PATH ] ; then
-	echo "- new clone"
-	git clone https://github.com/vivien/i3blocks $I3BLOCKS_PATH
-	cd $I3BLOCKS_PATH
-	build_i3blocks
-else
-	echo "-pulling changes"
-	cd $I3BLOCKS_PATH
-	check_repository
-	if [ $? -ne 0 ]; then
-		git pull
-		build_i3blocks
-	fi
-fi
+#echo "Checking i3blocks package requirements"
+#which i3blocks 1>/dev/null 2>/dev/null
+#if [ $? -ne 0 ]; then
+#	echo "- installing"
+#	sudo aptitude install ruby-ronn
+#else
+#	echo "- already installed"
+#fi
+#function build_i3blocks {
+#	echo "- bulding i3blocks"
+#	make all
+#	sudo make install
+#}
+#echo "Checking i3blocks repository"
+#if [ ! -d $I3BLOCKS_PATH ] ; then
+#	echo "- new clone"
+#	git clone https://github.com/vivien/i3blocks $I3BLOCKS_PATH
+#	cd $I3BLOCKS_PATH
+#	build_i3blocks
+#else
+#	echo "-pulling changes"
+#	cd $I3BLOCKS_PATH
+#	check_repository
+#	if [ $? -ne 0 ]; then
+#		git pull
+#		build_i3blocks
+#	fi
+#fi
 
 # Rofi
 echo "Checking Rofi package requirements"
@@ -92,7 +92,7 @@ else
 fi
 
 # Additional packages
-additionals=("i3lock" "xautolock" "acpi" "lm-sensors" "terminator" "dunst" "feh" "xclip" "inotify-tools" "libpcsclite1" "pcscd" "pcsc-tools")
+additionals=("i3lock" "i3blocks" "xautolock" "acpi" "lm-sensors" "terminator" "dunst" "feh" "xclip" "inotify-tools" "libpcsclite1" "pcscd" "pcsc-tools")
 echo "Checking additional packages (${additional[*]}"
 for additional in ${additionals[@]}; do
 	echo -n "- $additional"
