@@ -1,9 +1,15 @@
 #!/bin/bash
 
-COUNT=$(cat ~/.sup/new_mails)
+COUNT=$(cat ~/.i3/new_mails)
+
+case $BLOCK_BUTTON in
+  # LeftClick - Spotify
+	1) echo 0; ~/.i3/new_mails.sh 0; exit 0; ;;
+esac
 
 echo $COUNT
 if [ "$COUNT" != 0 ]; then
 	echo "#FF0000"
 	exit 33
 fi
+

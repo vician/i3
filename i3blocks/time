@@ -1,0 +1,15 @@
+#!/bin/bash
+
+date '+%a %e.%b %H:%M'
+
+next_month=$(date --date="next month" +"%m %Y")
+prev_month=$(date --date="last month" +"%m %Y")
+
+case $BLOCK_BUTTON in
+  # LeftClick - Spotify
+	1) notify-send "$(cal -h)" ;;
+  # MiddleClick - gnome-mplayer
+	2) notify-send "$(cal -h $prev_month)"  ;;
+  # RightClick - VLC
+	3) notify-send "$(cal -h $next_month)"  ;;
+esac
