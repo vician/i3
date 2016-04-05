@@ -207,7 +207,10 @@ bindsym $mod+Control+KP_9 workspace $w9; move workspace to output left
 bindsym $mod+Control+KP_0 workspace $w10; move workspace to output left
 
 assign [class="Pidgin"] $w7
+assign [class="YakYak"] $w7
+assign [class="Smuxi"] $w7
 assign [class="Thunderbird"] $w8
+assign [class="Evolution"] $w8
 assign [class="KeePass"] $w0
 assign [class="Spotify"] $w12
 assign [class="Chromium"] $w1
@@ -238,7 +241,9 @@ mode "resize" {
 
 	# same bindings, but for the arrow keys
 	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
 	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
 
 
 	# back to normal: Enter or Escape
