@@ -92,7 +92,7 @@ else
 fi
 
 # Additional packages
-additionals=("i3lock" "i3blocks" "xautolock" "acpi" "lm-sensors" "terminator" "dunst" "feh" "xclip" "inotify-tools" "libpcsclite1" "pcscd" "pcsc-tools")
+additionals=("i3lock" "i3blocks" "xautolock" "acpi" "lm-sensors" "terminator" "dunst" "feh" "xclip" "inotify-tools" "libpcsclite1" "pcscd" "pcsc-tools" "libxcb-ewmh-dev")
 echo "Checking additional packages (${additional[*]}"
 for additional in ${additionals[@]}; do
 	echo -n "- $additional"
