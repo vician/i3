@@ -24,7 +24,7 @@ echo "Checking i3 package requirements"
 which i3 1>/dev/null 2>/dev/null
 if [ $? -ne 0 ]; then
 	echo "- installing"
-	sudo aptitude install libxcb1-dev libxcb-keysyms1-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-xinerama0-dev libpango1.0-dev libxcursor-dev libxcb-cursor-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev
+	sudo aptitude install libxcb1-dev libxcb-keysyms1-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-xinerama0-dev libpango1.0-dev libxcursor-dev libxcb-cursor-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev libx11-xcb
 else
 	echo "- already installed"
 fi
@@ -92,7 +92,7 @@ else
 fi
 
 # Additional packages
-additionals=("i3lock" "i3blocks" "xautolock" "acpi" "lm-sensors" "terminator" "dunst" "feh" "xclip" "inotify-tools" "libpcsclite1" "pcscd" "pcsc-tools" "libxcb-ewmh-dev")
+additionals=("i3lock" "i3blocks" "xautolock" "acpi" "lm-sensors" "terminator" "dunst" "feh" "xclip" "inotify-tools" "libpcsclite1" "pcscd" "pcsc-tools" "libxcb-ewmh-dev" "numlockx")
 echo "Checking additional packages (${additional[*]}"
 for additional in ${additionals[@]}; do
 	echo -n "- $additional"
