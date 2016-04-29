@@ -1,11 +1,11 @@
 #!/bin/bash
 
-exec >> /home/sansom/.i3/monitor.log 2>&1
+exec >> /home/martin/.i3/monitor.log 2>&1
 
 date
 
 export DISPLAY=:0
-export XAUTHORITY=/home/sansom/.Xauthority
+export XAUTHORITY=/home/martin/.Xauthority
 
  # Read the status of the relevant graphics adapter
 if [ "$HOSTNAME" == "remus" ]; then
@@ -15,9 +15,9 @@ elif [ "$HOSTNAME" == "pete" ]; then
 fi
 echo "$HOSTNAME: $STATUS"
 if [ "$STATUS" = "connected" ]; then
-	/home/sansom/.screenlayout/both.sh
+	/home/martin/.screenlayout/both.sh
 else
-	/home/sansom/.screenlayout/nb-only.sh
+	/home/martin/.screenlayout/nb-only.sh
 fi  
 if [ $# -eq 0 ]; then
 	i3-msg restart

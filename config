@@ -362,4 +362,5 @@ exec_always ~/.i3/monitor-hotplug.sh noreload
 exec_always pgrep udevadm > /dev/null || udevadm monitor --property &
 
 exec gpg-agent
+exec seahorse-daemon
 exec numlockx on

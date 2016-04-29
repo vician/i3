@@ -9,7 +9,7 @@ fi
 #if [ $# -eq 0 ]; then
 #	~/.i3/yubi/approved.sh
 #	if [ $? -eq 0 ]; then
-#		i3-nagbar -t warning -m 'WARNING: Inserted security key, are you sure that you want to lock computer manually?!' -b 'Yes, lock' '/home/sansom/.i3/lock.sh nosmartcard'
+#		i3-nagbar -t warning -m 'WARNING: Inserted security key, are you sure that you want to lock computer manually?!' -b 'Yes, lock' '/home/martin/.i3/lock.sh nosmartcard'
 #		exit 0
 #	fi
 #else
@@ -27,3 +27,4 @@ setxkbmap -layout us,cz
 setxkbmap -option 'grp:alt_caps_toggle'
 setxkbmap -variant ',qwerty'
 i3lock -e --color 000000 # lock
+#i3lock -e --color 000000 -i /home/martin/Pictures/lock.png -t # lock
