@@ -1,11 +1,15 @@
 #!/bin/bash
 
+readonly BASE_FILE=$(readlink -f $0)
+
 readonly SRC_PATH="$HOME/Documents/src/"
 readonly I3_PATH=${SRC_PATH}i3
 readonly ROFI_PATH=${SRC_PATH}rofi
 readonly LAYOUT_PATH=${SRC_PATH}xkblayout-state
 readonly RS_PATH=${SRC_PATH}i3scripts
 readonly I3BLOCKS_PATH=${SRC_PATH}i3blocks
+
+readonly I3BLOCK_COLOR_PATCH="$(dirname $BASE_FILE)/i3blocks-color.patch"
 
 function check_repository {
 	git remote update
@@ -52,34 +56,35 @@ else
 fi
 
 # i3blocks
-#echo "Checking i3blocks package requirements"
-#which i3blocks 1>/dev/null 2>/dev/null
-#if [ $? -ne 0 ]; then
-#	echo "- installing"
-#	sudo aptitude install ruby-ronn
-#else
-#	echo "- already installed"
-#fi
-#function build_i3blocks {
-#	echo "- bulding i3blocks"
-#	make all
-#	sudo make install
-#}
-#echo "Checking i3blocks repository"
-#if [ ! -d $I3BLOCKS_PATH ] ; then
-#	echo "- new clone"
-#	git clone https://github.com/vivien/i3blocks $I3BLOCKS_PATH
-#	cd $I3BLOCKS_PATH
-#	build_i3blocks
-#else
-#	echo "-pulling changes"
-#	cd $I3BLOCKS_PATH
-#	check_repository
-#	if [ $? -ne 0 ]; then
-#		git pull
-#		build_i3blocks
-#	fi
-#fi
+echo "Checking i3blocks package requirements"
+which i3blocks 1>/dev/null 2>/dev/null
+if [ $? -ne 0 ]; then
+	echo "- installing"
+	sudo aptitude install ruby-ronn
+else
+	echo "- already installed"
+fi
+function build_i3blocks {
+	echo "- bulding i3blocks"
+	git apply $I3BLOCK_COLOR_PATCH
+	make all
+	sudo make install
+}
+echo "Checking i3blocks repository"
+if [ ! -d $I3BLOCKS_PATH ] ; then
+	echo "- new clone"
+	git clone https://github.com/vivien/i3blocks $I3BLOCKS_PATH
+	cd $I3BLOCKS_PATH
+	build_i3blocks
+else
+	echo "-pulling changes"
+	cd $I3BLOCKS_PATH
+	check_repository
+	if [ $? -ne 0 ]; then
+		git pull
+		build_i3blocks
+	fi
+fi
 
 # Rofi
 echo "Checking Rofi package requirements"
