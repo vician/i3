@@ -8,6 +8,7 @@ readonly ROFI_PATH=${SRC_PATH}rofi
 readonly LAYOUT_PATH=${SRC_PATH}xkblayout-state
 readonly RS_PATH=${SRC_PATH}i3scripts
 readonly I3BLOCKS_PATH=${SRC_PATH}i3blocks
+readonly I3LOCK_PATH=${SRC_PATH}i3lock
 
 readonly I3BLOCK_COLOR_PATCH="$(dirname $BASE_FILE)/i3blocks-color.patch"
 
@@ -97,7 +98,7 @@ else
 fi
 
 # Additional packages
-additionals=("i3lock" "i3blocks" "xautolock" "acpi" "lm-sensors" "terminator" "dunst" "feh" "xclip" "inotify-tools" "libpcsclite1" "pcscd" "pcsc-tools" "libxcb-ewmh-dev" "numlockx")
+additionals=("xautolock" "acpi" "lm-sensors" "terminator" "dunst" "feh" "xclip" "inotify-tools" "libpcsclite1" "pcscd" "pcsc-tools" "libxcb-ewmh-dev" "numlockx")
 echo "Checking additional packages (${additional[*]}"
 for additional in ${additionals[@]}; do
 	echo -n "- $additional"
@@ -135,6 +136,31 @@ else
 		build_rofi
 	fi
 fi
+
+# Building i3lock
+function build_i3lock {
+	echo "- building i3lock"
+	make
+	sudo make install
+}
+sudo apt install libpam0g-dev libxcb-dpms0-dev
+
+echo "Checking i3lock repository"
+if [ ! -d $I3LOCK_PATH ]; then
+        echo "- new clone"
+        git clone https://github.com/i3/i3lock $I3LOCK_PATH
+        cd $I3LOCK_PATH
+        build_i3lock
+else
+        echo "- pulling changes"
+        cd $I3LOCK_PATH
+        check_repository
+        if [ $? -ne 0 ]; then
+                git pull
+                build_i3lock
+        fi
+fi
+
 
 # Keyboard layout
 echo "Checking Keyboard layout repository"
