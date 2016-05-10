@@ -34,6 +34,12 @@ else
 	echo "- already installed"
 fi
 
+# https://launchpad.net/ubuntu/+source/xcb-util-xrm
+# wget "https://launchpad.net/ubuntu/+archive/primary/+files/libxcb-xrm0_1.0-1_amd64.deb"
+# sudo gdebi libxcb-xrm0_1.0-1_amd64.deb
+# wget "https://launchpad.net/ubuntu/+archive/primary/+files/libxcb-xrm-dev_1.0-1_amd64.deb"
+# sudo gdebi libxcb-xrm-dev_1.0-1_amd64.deb
+
 # Building i3
 function build_i3 {
 	echo "- building i3"
