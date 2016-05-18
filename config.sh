@@ -31,7 +31,7 @@ if [ $HOSTNAME == "remus" ]; then
 	OUTPUT_DEFINITION='set $min LVDS1\nset $mex HDMI3'
 	TRAY_OUTPUT=''
 elif [ $HOSTNAME == "pete" ]; then
-	OUTPUT_DEFINITION='set $min LVDS1\nset $mex HDMI3'
+	OUTPUT_DEFINITION='set $min HDMI-1\nset $mex eDP-1'
 	#TRAY_OUTPUT='tray_output $min'
 	TRAY_OUTPUT=''
 else
