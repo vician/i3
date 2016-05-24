@@ -19,3 +19,7 @@ city=$(sed "${index}q;d" $city_file)
 api=$(cat $api_file)
 
 $base_dir/wunderground-temperature.py $api "$city"
+case $BLOCK_BUTTON in
+	  # LeftClick - Auto
+		1) notify-send "$(cat ~/.i3/weather_condition)" ;;
+esac

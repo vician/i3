@@ -194,6 +194,7 @@ fi
 
 # Init player file
 touch ~/.i3/player
+touch ~/.i3/weather_condition
 
 if [ ! -f /etc/udev/rules.d/80-monitor-hotplug.rules ]; then
 	#echo ACTION=="change", SUBSYSTEM=="drm", RUN+="/home/$USER/.i3/monitor-hotplug.sh" > /etc/udev/rules.d/80-monitor-hotplug.rules
