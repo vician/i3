@@ -1,12 +1,50 @@
 #!/bin/bash
 
+function help {
+	notify-send "Help
+- left click: set to auto
+- right click: this help
+- mousewheel up: previous player
+- mousewheel down: next player
+- middle click: list of players
+"
+}
+
+
+function change_player {
+	# Check if current player is in list
+	echo ${players[*]} | grep $name 1>/dev/null
+	if [ $? -ne 0 ]; then
+		# Unknown player - set to auto
+		echo "auto" > ~/.i3/player
+	fi
+	index=$(echo ${players[@]/$name//} | cut -d/ -f1 | wc -w | tr -d ' ')
+	next_index=$(expr $index $way 1)
+	if [ $next_index -eq -1 ]; then
+		next_index=$(expr ${#players[@]} - 1)
+	fi
+	if [ $next_index -eq ${#players[@]} ]; then
+		next_index=0
+	fi
+	next_player=${players[$next_index]}
+	echo $next_player > ~/.i3/player
+}
+
+source ~/.i3/players
+name="$(cat ~/.i3/player)"
+
+
+
 case $BLOCK_BUTTON in
-  # LeftClick - Spotify
-  1) echo "spotify" > ~/.i3/player ;;
-  # MiddleClick - gnome-mplayer
-  2) echo "gnome-mplayer" > ~/.i3/player ;;
-  # RightClick - VLC
-  3) echo "vlc" > ~/.i3/player  ;;
+  # LeftClick - Auto
+  1) echo "auto" > ~/.i3/player ;;
+  2) notify-send "players: ${players[*]}" ;;
+  3) help  ;;
+	4) way="+" ; change_player ;;
+	5) way="-" ; change_player ;;
 esac
 
+if [ ! -f ~/.i3/player ]; then
+	echo "auto" > ~/.i3/player
+fi
 cat ~/.i3/player | cut -c1-1 | awk '{print toupper($0)}'

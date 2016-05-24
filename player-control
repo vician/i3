@@ -1,5 +1,24 @@
-#!/bin/sh
-name="$(cat ~/.i3/player)"
+#!/bin/bash
+
+source ~/.i3/players # Load lists of players
+name="$(cat ~/.i3/player)" # Load current player
+
+if [ "$name" = "auto" ]; then
+for i_name in ${players[@]}; do
+		if [ "$i_name" = "auto" ]; then continue ; fi
+		pgrep $i_name 1>/dev/null 2>/dev/null
+		if [ $? -eq 0 ]; then
+			name="$i_name"
+			break
+		fi
+	done
+fi
+
+if [ "$name" = "auto" ] || [ ! "$name" ]; then
+	notify-send "ERROR: Cannot find player for $@!"
+	exit 0
+fi
+
 #shift
 PATHS="org.mpris.MediaPlayer2.$name /org/mpris/MediaPlayer2"
 DBUS_SEND="dbus-send --type=method_call --dest=$PATHS"
@@ -21,6 +40,6 @@ elif [ "$@" = "random" ]; then
     fi
     $DBUS_SEND org.freedesktop.DBus.Properties.Set string:org.mpris.MediaPlayer2.Player string:Shuffle variant:boolean:$other
 else
-    echo "Command not found for player $name: $@" 1>&2
+    notify-send "Command not found for player $name: $@"
     exit 1
 fi
