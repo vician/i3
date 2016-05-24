@@ -57,3 +57,5 @@ fi
 
 # Add do not change this file
 sed -i "1s/^/##################################\n### DO NOT CHANGE THIS FILE!!! ###\n##################################\n\n/" $FINAL_CONFIG
+
+i3-msg restart
