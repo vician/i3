@@ -69,11 +69,11 @@ elif icon == "rain":
 elif icon == "sleet":
     symbol = "☂❄"
 elif icon == "snow":
-    symbol = "☃"
+    symbol = "❄"
 elif icon == "sunny":
-    symbol = "☃"
+    symbol = "☼"
 elif icon == "tstorms":
-    symbol = "☃"
+    symbol = "ϟ"
 elif icon == "unknown":
     symbol = "?"
 # = Night =
@@ -90,7 +90,7 @@ elif icon == "nt_chancetstorms":
     symbol = "?ϟ"
 # Second line
 elif icon == "nt_clear":
-    symbol = "☼"
+    symbol = "☾"
 elif icon == "nt_cloudy":
     symbol = "☁"
 elif icon == "nt_flurries":
@@ -116,9 +116,9 @@ elif icon == "nt_sleet":
 elif icon == "nt_snow":
     symbol = "☃"
 elif icon == "nt_sunny":
-    symbol = "☃"
+    symbol = "☾"
 elif icon == "nt_tstorms":
-    symbol = "☃"
+    symbol = "ϟ"
 elif icon == "nt_unknown":
     symbol = "?"
 
