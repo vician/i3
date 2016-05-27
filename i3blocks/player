@@ -35,14 +35,14 @@ name="$(cat ~/.i3/player)"
 
 
 
-case $BLOCK_BUTTON in
-  # LeftClick - Auto
-  1) echo "auto" > ~/.i3/player ;;
-  2) notify-send "players: ${players[*]}" ;;
-  3) help  ;;
-	4) way="+" ; change_player ;;
-	5) way="-" ; change_player ;;
-esac
+#case $BLOCK_BUTTON in
+#  # LeftClick - Auto
+#  1) echo "auto" > ~/.i3/player ;;
+#  2) notify-send "players: ${players[*]}" ;;
+#  3) help  ;;
+#	4) way="+" ; change_player ;;
+#	5) way="-" ; change_player ;;
+#esac
 
 if [ ! -f ~/.i3/player ]; then
 	echo "auto" > ~/.i3/player
