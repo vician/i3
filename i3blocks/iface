@@ -52,4 +52,15 @@ esac
 
 IF_SHORT=$(echo $IF | cut -c1-1)
 
-echo "🌎  $IF_SHORT"
+IPSUM=""
+if [ "$IPADDR4" ]; then
+	IPSUM="${IPSUM}4"
+fi
+if [ "$IPADDR6" ]; then
+	IPSUM="${IPSUM}6"
+fi
+if [ "$IPSUM" == "46" ]; then
+	IPSUM="8" 
+fi
+
+echo "🌎 ${IF_SHORT}${IPSUM}"
