@@ -15,7 +15,7 @@ for i_name in ${players[@]}; do
 fi
 
 if [ "$name" = "auto" ] || [ ! "$name" ]; then
-	notify-send "ERROR: Cannot find player for $@!"
+	#notify-send "ERROR: Cannot find player for $@!"
 	exit 0
 fi
 
