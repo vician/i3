@@ -3,7 +3,7 @@
 #LOCK="i3lock"
 #LOCK_CMD="-e --color 000000"
 LOCK="slock"
-LOCK_CMD=""
+LOCK_CMD="/usr/bin/xset dpms force off"
 
 pkill $LOCK #Always kill previous locked
 #pgrep $LOCK
