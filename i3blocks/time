@@ -1,6 +1,6 @@
 #!/bin/bash
 
-date '+%a %e.%b %H:%M'
+date '+%a %e.%b %H:%M:%S'
 
 next_month=$(date --date="next month" +"%m %Y")
 prev_month=$(date --date="last month" +"%m %Y")
