@@ -1,0 +1,48 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 729,
+       "width": 1084,
+       "x": 0,
+       "y": 0
+    },
+    "name": "Klára Viciánová",
+    "percent": 0.812591508052709,
+    "swallows": [
+       {
+        "class": "^Pidgin$",
+        "instance": "^Pidgin$",
+        "transient_for": "^$",
+        "window_role": "^conversation$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 729,
+       "width": 274,
+       "x": 3008,
+       "y": 469
+    },
+    "name": "Buddy List",
+    "percent": 0.187408491947291,
+    "swallows": [
+       {
+        "class": "^Pidgin$",
+        "instance": "^Pidgin$",
+        "title": "^Buddy\\ List$",
+        "transient_for": "^$",
+        "window_role": "^buddy_list$"
+       }
+    ],
+    "type": "con"
+}
+

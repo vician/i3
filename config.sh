@@ -69,6 +69,7 @@ for variable in ${variables[@]}; do
 			echo "OK"
 		fi
 	else
+		sed -i "s/$variable//g" $FINAL_CONFIG
 		echo "EMPTY!"
 	fi
 done
