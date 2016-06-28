@@ -28,30 +28,38 @@ cp $CONFIG $FINAL_CONFIG
 
 
 if [ $HOSTNAME == "remus" ]; then
-	#OUTPUT_DEFINITION='set $min LVDS1\nset $mex HDMI3'
-	sh_w0mon="LVDS1"
-	sh_w1mon="HDMI3"
-	sh_wterms="HDMI3"
-	sh_w7mon="LVDS1"
-	sh_w8mon="HDMI3"
-	sh_w9mon="LVDS1"
-	sh_w10mon="HDMI3"
-	sh_w11mon="LVDS1"
-	sh_w12mon="LVDS1"
-	sh_w13mon="HDMI3"
+	mon_prim="HDMI3"
+	mon_sec="LVDS1"
+	sh_w0mon=$mon_sec
+	sh_w1mon=$mon_prim
+	sh_wterms=$mon_prim
+	sh_w7mon=$mon_sec
+	sh_w8mon=$mon_prim
+	sh_w9mon=$mon_sec
+	sh_w10mon=$mon_prim
+	sh_w11mon=$mon_sec
+	sh_w12mon=$mon_sec
+	sh_w13mon=$mon_prim
 
 elif [ $HOSTNAME == "pete" ]; then
-	#OUTPUT_DEFINITION='set $min HDMI-1\nset $mex eDP-1'
-	sh_w0mon="eDP-1"
-	sh_w1mon="eDP-1"
-	sh_wterms="eDP-1"
-	sh_w7mon="eDP-1"
-	sh_w8mon="eDP-1"
-	sh_w9mon="eDP-1"
-	sh_w10mon="eDP-1"
-	sh_w11mon="HDMI-1"
-	sh_w12mon="HDMI-1"
-	sh_w13mon="eDP-1"
+  xrandr | grep eDP-1
+	if [ $? -eq 0 ]; then
+		mon_prim="eDP-1"
+		mon_sec="HDMI-1"
+	else
+		mon_prim="eDP1"
+		mon_sec="HDMI1"
+	fi
+	sh_w0mon=$mon_prim
+	sh_w1mon=$mon_prim
+	sh_wterms=$mon_prim
+	sh_w7mon=$mon_prim
+	sh_w8mon=$mon_prim
+	sh_w9mon=$mon_prim
+	sh_w10mon=$mon_prim
+	sh_w11mon=$mon_sec
+	sh_w12mon=$mon_sec
+	sh_w13mon=$mon_prim
 else
 	echo "Unknosh_wn hostname!"
 	exit 1
