@@ -8,7 +8,7 @@ export DISPLAY=:0
 export XAUTHORITY=/home/martin/.Xauthority
 
  # Read the status of the relevant graphics adapter
-if [ "$HOSTNAME" == "remus" ]; then
+if [ "$HOSTNAME" == "remus" ] || [ $HOSTNAME == "duane" ]; then
 	read STATUS < /sys/class/drm/card0-HDMI-A-3/status
 elif [ "$HOSTNAME" == "pete" ]; then
 	read STATUS < /sys/class/drm/card0-HDMI-A-1/status

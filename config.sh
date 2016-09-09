@@ -27,7 +27,7 @@ esac
 cp $CONFIG $FINAL_CONFIG
 
 
-if [ $HOSTNAME == "remus" ]; then
+if [ $HOSTNAME == "remus" ] || [ $HOSTNAME == "duane" ]; then
 	mon_prim="HDMI3"
 	mon_sec="LVDS1"
 	sh_w0mon=$mon_sec
