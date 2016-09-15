@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CURRENT=$(~/Documents/src/xkblayout-state/xkblayout-state print "%n")
+CURRENT=$(xkblayout-state print "%n")
 
 #echo "currently: $CURRENT"
 
