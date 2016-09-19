@@ -1,55 +1,23 @@
 #!/bin/bash
 
-#BASE_PATH=$(dirname $0)
-#
-#function gen_workspaces()
-#{
-#    i3-msg -t get_workspaces | tr ',' '\n' | grep "name" | sed 's/"name":"\(.*\)"/\1/g' | sort -n
-#}
-#
-#
-#WORKSPACE=$( (echo empty; gen_workspaces)  | rofi -dmenu -p "Select workspace:")
-#
-#if [ x"empty" = x"${WORKSPACE}" ]
-#then
-#    $BASE_PATH/i3_empty_workspace.sh
-#elif [ -n "${WORKSPACE}" ]
-#then
-#    i3-msg workspace "${WORKSPACE}"
-#fi
-
-declare -A options
-#options["lock"]="/home/martin/.i3/lock.sh"
-#options["suspend"]="/home/martin/.i3/suspend.sh"
-#options["poweroff"]="poweroff"
-#options["logout"]="i3-msg exit"
-
-function add_option() {
-	name="$1"
-	cmd="$2"
-	options[$name]="$cmd"
-	echo "$name"
-}
-
 function gen_options() {
-	add_option lock /home/martin/.i3/lock.sh
- 	add_option suspend /home/martin/.i3/suspend.sh
-	add_option poweroff poweroff
-	add_option logout "i3-msg exit"	
+	echo "lock"
+	echo "suspend"
+	echo "poweroff"
+	echo "reload i3"
+	echo "restart i3"
+	echo "logout"
 }
 
-echo ${options[@]}
 
 selected=$( gen_options | rofi -dmenu -p "Select action:")
-
 
 function gen_sure() {
 	echo "No"
 	echo "Yes"
 }
 
-echo "selected: $selected, will do: ${options[$selected]}"
-
+echo "selected: $selected"
 
 if [ "$selected" == "poweroff" ] || [ "$selected" == "suspend" ]; then
 	echo "Asking for sure"
@@ -60,6 +28,20 @@ if [ "$selected" == "poweroff" ] || [ "$selected" == "suspend" ]; then
 	fi
 fi
 
-$( ${options[$selected]} )
+if [ "$selected" == "lock" ]; then
+	/home/martin/.i3/lock.sh
+elif [ "$selected" == "suspend" ]; then
+	/home/martin/.i3/suspend.sh
+elif [ "$selected" == "poweroff" ]; then
+	poweroff
+elif [ "$selected" == "logout" ]; then
+	i3-msg exit
+elif [ "$selected" == "reload i3" ]; then
+	i3-msg reload
+elif [ "$selected" == "restart i3" ]; then
+	i3-msg restart
+else
+	echo "Unsuported choice!"
+fi
 
 echo "Exit"
