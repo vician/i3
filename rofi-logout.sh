@@ -4,6 +4,7 @@ function gen_options() {
 	echo "lock"
 	echo "suspend"
 	echo "poweroff"
+	echo "reboot"
 	echo "reload i3"
 	echo "restart i3"
 	echo "logout"
@@ -19,7 +20,7 @@ function gen_sure() {
 
 echo "selected: $selected"
 
-if [ "$selected" == "poweroff" ] || [ "$selected" == "suspend" ]; then
+if [ "$selected" == "poweroff" ] || [ "$selected" == "suspend" ] || [ "$selected" == "reboot" ]; then
 	echo "Asking for sure"
 	sure=$( gen_sure | rofi -dmenu -p "Are you sure?!")
 	if [ "$sure" != "Yes" ]; then
@@ -34,6 +35,8 @@ elif [ "$selected" == "suspend" ]; then
 	/home/martin/.i3/suspend.sh
 elif [ "$selected" == "poweroff" ]; then
 	poweroff
+elif [ "$selected" == "reboot" ]; then
+	reboot
 elif [ "$selected" == "logout" ]; then
 	i3-msg exit
 elif [ "$selected" == "reload i3" ]; then
