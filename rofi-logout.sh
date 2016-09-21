@@ -20,7 +20,7 @@ function gen_sure() {
 
 echo "selected: $selected"
 
-if [ "$selected" == "poweroff" ] || [ "$selected" == "suspend" ] || [ "$selected" == "reboot" ]; then
+if [ "$selected" == "poweroff" ] || [ "$selected" == "logout" ] || [ "$selected" == "reboot" ]; then
 	echo "Asking for sure"
 	sure=$( gen_sure | rofi -dmenu -p "Are you sure?!")
 	if [ "$sure" != "Yes" ]; then
