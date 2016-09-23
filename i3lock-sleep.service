@@ -1,0 +1,18 @@
+# i3lock - systemd suspend/resume service
+#
+# Copyright (c) 2016 Martin Vician <info at vician.cz>
+# This software is licensed under the GPL v2 or later.
+
+[Unit]
+Description=I3lock suspend/resume
+Before=sleep.target
+Documentation=https://wiki.vician.cz/kb/notebook#lock_on_suspend
+
+[Service]
+Type=forking
+Environment=DISPLAY=:0
+User=martin
+ExecStart=/home/martin/.i3/lock.sh
+
+[Install]
+WantedBy=sleep.target

@@ -32,7 +32,7 @@ fi
 if [ "$selected" == "lock" ]; then
 	/home/martin/.i3/lock.sh
 elif [ "$selected" == "suspend" ]; then
-	/home/martin/.i3/suspend.sh
+	systemctl suspend
 elif [ "$selected" == "poweroff" ]; then
 	poweroff
 elif [ "$selected" == "reboot" ]; then
