@@ -21,3 +21,6 @@ if [ "$current" = "Czech" ]; then
 		pkill -SIGRTMIN+12 i3blocks
 		exit 0
 fi
+
+# Default
+setxkbmap -layout us
