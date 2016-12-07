@@ -7,3 +7,4 @@ pgrep keepassx2 1>/dev/null | i3-msg "exec keepassx2" 1>/dev/null
 pgrep spotify 1>/dev/null || i3-msg "exec spotify" 1>/dev/null
 pgrep chromium 1>/dev/null || i3-msg "workspace 1w; exec chromium" 1>/dev/null
 pgrep telegram 1>/dev/null || i3-msg "exec telegram-desktop" 1>/dev/null
+pgrep slack 1>/dev/null || i3-msg "exec slack" 1>/dev/null
