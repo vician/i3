@@ -1,3 +1,3 @@
 #!/bin/bash
 
-players=("auto" "gnome-mplayer" "vlc" "spotify")
+players=("auto" "gnome-mplayer" "vlc" "gradio" "spotify")
