@@ -89,5 +89,5 @@ if [ $? -ne 0 ]; then
 	echo "Invalid i3 config!"
 	exit 0
 fi
-#i3-msg restart
+i3-msg restart
 #i3-msg reload
