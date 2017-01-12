@@ -15,6 +15,8 @@ if [ ! -f $FINAL_CONFIG ] ; then
 	exit 1
 fi
 
+chmod u=rw $FINAL_CONFIG
+
 
 COUNT=$(xrandr | grep " connected" | wc -l)
 PRIMARY=$(xrandr | grep "connected primary" | awk '{print $1}')
@@ -57,7 +59,7 @@ echo "third: $sh_mon_third"
 #	  ;;
 #esac
 #
-#cp $CONFIG $FINAL_CONFIG
+cp $CONFIG $FINAL_CONFIG
 
 #variables=("sh_w0mon" "sh_w1mon" "sh_wterms" "sh_w7mon" "sh_w8mon" "sh_w9mon" "sh_w10mon" "sh_w11mon" "sh_w12mon" "sh_w13mon")
 variables=("sh_mon_primary" "sh_mon_secondary" "sh_mon_third")
@@ -79,10 +81,13 @@ done
 # Add do not change this file
 sed -i "1s/^/##################################\n### DO NOT CHANGE THIS FILE!!! ###\n##################################\n\n/" $FINAL_CONFIG
 
+# MAke config readonly
+chmod u=r $FINAL_CONFIG
+
 i3 -C
 if [ $? -ne 0 ]; then
 	echo "Invalid i3 config!"
 	exit 0
 fi
 #i3-msg restart
-i3-msg reload
+#i3-msg reload

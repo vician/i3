@@ -2,19 +2,19 @@
 
 ## Workspaces
 
-* `k
-* 1w
-* 2t
-* 3t
-* 4t
-* 5t
-* 6a
-* 7p
-* 8m
-* 9n
-* 10w
-* -w
-* =s
+* `k - keepass
+* 1w - web
+* 2t - term
+* 3t - term
+* 4t - term
+* 5t - term
+* 6g - telegram
+* 7m - mattermost
+* 8p - pidgin
+* 9m - thunderbird
+* 10w - web
+* -m - media
+* =s - spotify
 * ←
 * 11
 * 12
