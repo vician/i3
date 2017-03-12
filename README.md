@@ -1,5 +1,14 @@
 # My i3wm configuration
 
+## Requirements
+
+* py3status
+* rofi
+* acpi
+* nextloucd-client
+* insync
+* spotify
+
 ## Workspaces
 
 * `k - keepass
