@@ -9,6 +9,10 @@
 * insync
 * spotify
 * gnome-keyring, seahorse
+* cower
+* xkblayout-state
+* lm_sensors
+* iw
 
 ## Workspaces
 
