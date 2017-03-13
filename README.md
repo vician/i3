@@ -8,6 +8,7 @@
 * nextloucd-client
 * insync
 * spotify
+* gnome-keyring, seahorse
 
 ## Workspaces
 
