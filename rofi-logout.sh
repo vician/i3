@@ -8,6 +8,7 @@ function gen_options() {
 	echo "reload i3"
 	echo "restart i3"
 	echo "logout"
+	echo "wifi"
 }
 
 
@@ -43,6 +44,8 @@ elif [ "$selected" == "reload i3" ]; then
 	i3-msg reload
 elif [ "$selected" == "restart i3" ]; then
 	i3-msg restart
+elif [ "$selected" == "wifi" ]; then
+	gksudo ~/.i3/wpa_supplicant.sh
 else
 	echo "Unsuported choice!"
 fi
