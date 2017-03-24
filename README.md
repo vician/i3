@@ -13,6 +13,7 @@
 * xkblayout-state
 * lm_sensors
 * iw
+* dunst
 
 ## Workspaces
 
