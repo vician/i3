@@ -14,6 +14,7 @@
 * lm_sensors
 * iw
 * dunst
+* python-requests
 
 ## Workspaces
 
