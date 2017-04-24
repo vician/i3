@@ -6,5 +6,6 @@ pgrep Mattermost 1>/dev/null || i3-msg "exec mattermost-desktop" 1>/dev/null
 pgrep thunderbird 1>/dev/null || i3-msg "exec thunderbird" 1>/dev/null
 pgrep keepassxc 1>/dev/null | i3-msg "exec keepassxc" 1>/dev/null
 pgrep spotify 1>/dev/null || i3-msg "exec spotify" 1>/dev/null
-pgrep telegram 1>/dev/null || i3-msg "exec telegram-desktop" 1>/dev/null
+#pgrep telegram 1>/dev/null || i3-msg "exec telegram-desktop" 1>/dev/null
+pgrep telegram 1>/dev/null || i3-msg "exec ~/Downloads/Telegram/Telegram" 1>/dev/null
 pgrep slack 1>/dev/null || i3-msg "exec slack" 1>/dev/null
