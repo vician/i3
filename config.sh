@@ -25,7 +25,7 @@ if [ $COUNT -ge 3 ]; then # Three or more outputs
 	SECONDARY=$(xrandr | grep " connected" | grep -v $PRIMARY | grep -v LVDS | awk '{print $1}')
 	THIRD=$(xrandr | grep " connected" | grep -v $PRIMARY | grep -v $SECONDARY | awk '{print $1}')
 else
-	SECONDARY=$(xrandr | grep " connected" | grep -v $PRIMARY | awk '{print $1}')
+	VIDEO=$(xrandr | grep " connected" | grep -v $PRIMARY | awk '{print $1}')
 fi
 
 if [ ! "$PRIMARY" ]; then
@@ -42,6 +42,10 @@ if [ ! "$THIRD" ]; then
 	THIRD="$SECONDARY"
 fi
 sh_mon_third="$THIRD"
+if [ ! "$VIDEO" ]; then
+	VIDEO="$THIRD"
+fi
+sh_mon_video="$VIDEO"
 
 echo "primary: $sh_mon_primary"
 echo "secondary: $sh_mon_secondary"
@@ -62,7 +66,7 @@ echo "third: $sh_mon_third"
 cp $CONFIG $FINAL_CONFIG
 
 #variables=("sh_w0mon" "sh_w1mon" "sh_wterms" "sh_w7mon" "sh_w8mon" "sh_w9mon" "sh_w10mon" "sh_w11mon" "sh_w12mon" "sh_w13mon")
-variables=("sh_mon_primary" "sh_mon_secondary" "sh_mon_third")
+variables=("sh_mon_primary" "sh_mon_secondary" "sh_mon_third" "sh_mon_video")
 for variable in ${variables[@]}; do
 	echo -n "- variable $variable = ${!variable} - "
 	if [ "${!variable}" ] ; then
