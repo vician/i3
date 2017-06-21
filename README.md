@@ -15,6 +15,8 @@
 * iw
 * dunst
 * python-requests
+* pip
+	* pydbus
 
 ## Workspaces
 
