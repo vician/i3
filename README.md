@@ -17,6 +17,7 @@
 * python-requests
 * pip
 	* pydbus
+* i3-scrot
 
 ## Workspaces
 
