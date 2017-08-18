@@ -1,48 +1,86 @@
 #!/bin/bash
 
-source ~/.i3/players # Load lists of players
-if [ ! -f ~/.i3/player ]; then
-	echo "spotify" > ~/.i3/player
+if [ $# -eq 0 ]; then
+	control="toggle"
 fi
-name="$(cat ~/.i3/player)" # Load current player
+if [ $# -ge 1 ]; then
+	control=$1
+fi
+if [ $# -ge 2 ]; then
+	player=$2
+else
+	if [ ! -f ~/.i3/player ]; then
+		echo "all" > ~/.i3/player
+	fi
+	player="$(cat ~/.i3/player)" # Load current player
+fi
 
-if [ "$name" = "auto" ]; then
-for i_name in ${players[@]}; do
-		if [ "$i_name" = "auto" ]; then continue ; fi
-		pgrep $i_name 1>/dev/null 2>/dev/null
+function get_first_player {
+	control=$1
+	source ~/.i3/players # Load lists of players
+	for i_player in ${players[@]}; do
+		if [ "$i_player" == "first" ] || [ "$i_player" == "auto" ]; then
+			continue
+		fi
+		pgrep $i_player 1>/dev/null 2>/dev/null
 		if [ $? -eq 0 ]; then
-			name="$i_name"
+			player="$i_player"
 			break
 		fi
 	done
-fi
 
-if [ "$name" = "auto" ] || [ ! "$name" ]; then
-	#notify-send "ERROR: Cannot find player for $@!"
-	exit 0
-fi
+	if [ "$player" == "first" ] || [ ! "$player" ]; then
+		#notify-send "ERROR: Cannot find player for $@!"
+		exit 0
+	fi
+	dbus $player $control
+}
 
-#shift
-PATHS="org.mpris.MediaPlayer2.$name /org/mpris/MediaPlayer2"
-DBUS_SEND="dbus-send --type=method_call --dest=$PATHS"
-RC="$DBUS_SEND org.mpris.MediaPlayer2.Player"
-if [ "$@" = "prev" ]; then
-    $RC.Previous
-elif [ "$@" = "stop" ]; then
-    $RC.Pause
-elif [ "$@" = "toggle" ]; then
-    $RC.PlayPause
-elif [ "$@" = "next" ]; then
-    $RC.Next
-elif [ "$@" = "random" ]; then
-    current=$(mdbus2 $PATHS org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player Shuffle)
-    if [ "$current" = "( true)" ]; then
-        other=false
-    else
-        other=true
-    fi
-    $DBUS_SEND org.freedesktop.DBus.Properties.Set string:org.mpris.MediaPlayer2.Player string:Shuffle variant:boolean:$other
+function get_all_players {
+	control=$1
+	players=($(dbus-send --session --dest=org.freedesktop.DBus \
+		--type=method_call --print-reply /org/freedesktop/DBus \
+		org.freedesktop.DBus.ListNames | grep org.mpris.MediaPlayer2 |
+	awk -F\" '{print $2}' | cut -d '.' -f4- | sort | sed ':a;N;$!ba;s/\n/ /g'))
+	echo "players: [${#players[@]}] ${players[@]}"
+	echo "control: $control"
+	for player in ${players[@]}; do
+		dbus $player $control
+	done
+}
+
+function dbus {
+	player=$1
+	control=$2
+	PATHS="org.mpris.MediaPlayer2.$player /org/mpris/MediaPlayer2"
+	DBUS_SEND="dbus-send --type=method_call --dest=$PATHS"
+	RC="$DBUS_SEND org.mpris.MediaPlayer2.Player"
+	if [ "$control" = "prev" ]; then
+		$RC.Previous
+	elif [ "$control" = "stop" ]; then
+		$RC.Pause
+	elif [ "$control" = "toggle" ]; then
+		$RC.PlayPause
+	elif [ "$control" = "next" ]; then
+		$RC.Next
+	elif [ "$control" = "random" ]; then
+		current=$(mdbus2 $PATHS org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player Shuffle)
+		if [ "$current" = "( true)" ]; then
+			other=false
+		else
+			other=true
+		fi
+		$DBUS_SEND org.freedesktop.DBus.Properties.Set string:org.mpris.MediaPlayer2.Player string:Shuffle variant:boolean:$other
+	else
+		notify-send "Command not found for player $player: $control"
+		exit 1
+	fi
+}
+
+if [ "$player" == "first" ]; then
+	get_first_player $control
+elif [ "$player" == "all" ]; then
+	get_all_players $control
 else
-    notify-send "Command not found for player $name: $@"
-    exit 1
+	dbus $player $control
 fi
