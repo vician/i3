@@ -1,0 +1,3 @@
+[submodule "i3scripts"]
+	path = i3scripts
+	url = git@github.com:vician/i3scripts.git
